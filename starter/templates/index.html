@@ -3,16 +3,59 @@
 <head>
   <meta charset="utf-8">
   <title>Sudoku Game</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
   <h1>Sudoku Game</h1>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌞</button>
+  <div class="controls difficulty-controls">
+    <label for="difficulty">Difficulty</label>
+    <select id="difficulty">
+      <option value="40">Easy</option>
+      <option value="32">Medium</option>
+      <option value="24">Hard</option>
+    </select>
+    <label for="player-name">Player Name</label>
+    <input id="player-name" type="text" maxlength="24" placeholder="Your name">
+  </div>
+  <div class="timer-panel controls">
+    <div class="timer-label">Time</div>
+    <div id="timer-display" class="timer-display">00:00</div>
+    <button id="pause-timer" type="button">Pause</button>
+    <button id="stop-timer" type="button">Stop</button>
+  </div>
   <div id="sudoku-board"></div>
+  <div class="leaderboard-panel">
+    <h2>Leaderboard</h2>
+    <table id="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Difficulty</th>
+          <th>Time</th>
+          <th>Hints Used</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+  </div>
   <div class="controls">
     <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
+    <button id="hint-cell" type="button">Hint</button>
+    <button id="check-solution">Compare</button>
     <span id="message"></span>
   </div>
-  <script src="/static/main.js"></script>
+  <div id="completion-popup" class="completion-popup hidden" aria-hidden="true">
+    <div class="completion-popup-card" role="dialog" aria-modal="true" aria-labelledby="completion-title">
+      <div id="completion-title" class="completion-popup-title">🎉 Congratulations!</div>
+      <div class="completion-popup-body">Completed in</div>
+      <div id="completion-time" class="completion-popup-time">00:00</div>
+      <div id="completion-difficulty" class="completion-popup-difficulty">Easy</div>
+      <div id="completion-player" class="completion-popup-player">Player</div>
+      <button id="close-completion-popup" type="button">Close</button>
+    </div>
+  </div>
+  <script src="/static/js/main.js"></script>
 </body>
 </html>
